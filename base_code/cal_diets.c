@@ -16,6 +16,19 @@
 #define MAX_DIETS 100      			// Maximum number of diets
 #define MAX_FOOD_NAME_LEN 50		// Maximum length of the name of food
 
+//loadDiets, inputDiet 함수 
+
+//MAX_EXERCISES 100 / 최대 운동 횟수
+//MAX_EXERCISE_NAME_LEN 50 / 운동 이름 길이
+//MAX_DIETS 100 / 최대 다이어트 횟수
+//MAX_FOOD_NAME_LEN 50 / 음식 이름 길이
+//DAILY_CALORIE_GOAL 2000 / 성인 여성 일일 권장 칼로리 섭취량
+//BASAL_METABOLIC_RATE 1300 / 성인 여성 기초대사량
+
+//EXERCISEFILEPATH "exercises.txt"
+//DIETFILEPATH "diets.txt"
+//HEALTHFILEPATH "health_data.txt"
+
 
 // list of diets 
 static Diet diet_list[MAX_DIETS];
@@ -23,17 +36,21 @@ static int diet_list_size = 0;
 
 
 /*
-    description : read the information in "diets.txt"
+    description : read the information in "diets.txt" 식단 정보 읽어오는 코딩 
 */
 
 void loadDiets(const char* DIETFILEPATH) {
+	
     FILE *file = fopen(DIETFILEPATH, "r");
+    
     if (file == NULL) {
         printf("There is no file for diets! \n");
         return;
     }
 
      // ToCode: to read a list of the diets from the given file
+     //파일에서 식단 정보 읽기
+	  
     while () {
     	
         if (diet_list_size >= MAX_DIETS){
