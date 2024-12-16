@@ -68,17 +68,37 @@ void inputExercise(HealthData* health_data) {
     
     // ToCode: to provide the options for the exercises to be selected
     printf("The list of exercises: \n");
-
-
-    // ToCode: to enter the exercise to be chosen with exit option
-
- 
     
-    // To enter the duration of the exercise
-    printf("Enter the duration of the exercise (in min.): ");
-    scanf("%d", &duration);
+    //운동 옵션 출력
+	for(i=0; i<exercise_list_size; i++)
+		printf("%d: %s, %d kcal/min\n", i+1, exercise_list[i].exercise_name, exercise_list[i].calories_burned_per_minute);
 
-    // ToCode: to enter the selected exercise and total calcories burned in the health data
-    
+	choice = -1; //초기값 -1로 설정. 
+	while(choice != 0)
+	{
+		// ToCode: to enter the exercise to be chosen with exit option
+		//사용자 운동 입력
+		printf("Select exercise (0 to exit): ");
+		scanf("%d", &choice);
+		
+		//선택 범위 맞는지 확인 후 운동시간 입력받기 
+		if(choice > exercise_list_size || choice <0)
+		{
+			printf("Wrong choice. Try again.\n");
+			continue;
+		}
 
+		else if (choice>0)
+		{
+			// To enter the duration of the exercise
+    		printf("Enter the duration of the exercise (in min.): ");
+			scanf("%d", &duration); 
+			
+			// ToCode: to enter the selected exercise and total calcories burned in the health data
+		}
+	}
+
+
+
+    printf("Exiting the exercise selection.\n");
 }
