@@ -1,11 +1,9 @@
 [Exercises] 
-walking - 4 kcal
-Total calories burned: 4 kcal 
+Total calories burned: 0 kcal 
 
 [Diets] 
-bread - 680 kcal
-Total calories intake: 680 kcal 
+Total calories intake: 0 kcal 
 
 [Total] 
 Basal metabolic rate: 1300 kcal
-The remaining calories: -624 kcal
+The remaining calories: -1300 kcal

@@ -51,11 +51,19 @@ void loadDiets(const char* DIETFILEPATH) {
      // ToCode: to read a list of the diets from the given file
      //파일에서 식단 정보 읽기
 	  
-    while () {
+    while (1) 
+	{
     	
-        if (diet_list_size >= MAX_DIETS){
+    	//다 읽었으면 루프 탈출. 
+    	//MAX_FOOD_NAME_LEN에 null문자 포함해서 49까지 읽을 수 있게 설정. 
+    	if(fscanf(file, "%49s %d", diet_list[diet_list_size].food_name, &diet_list[diet_list_size].calories_intake) != 2)
+    		break;
+    	
+        if (diet_list_size >= MAX_DIETS)
+		{
         	break;
 		}
+		diet_list_size ++;
     }
     fclose(file);
 }
@@ -65,8 +73,8 @@ void loadDiets(const char* DIETFILEPATH) {
     input parameters : health_data - data object to which the selected diet and its calories are added 
     return value : No
     
-    operation : 1. provide the options for the diets to be selected
-    			2. enter the selected diet and the total calories intake in the health data
+    operation : 1. provide the options for the diets to be selected //옵션 제공 
+    			2. enter the selected diet and the total calories intake in the health data //후 출력 받기 
 */
 
 void inputDiet(HealthData* health_data) {
