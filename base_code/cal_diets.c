@@ -106,14 +106,14 @@ void inputDiet(HealthData* health_data) {
 			printf("Wrong choice. Try again.\n");
 		else if(choice>0) 
 		{
-			//식단을 health_data 에 기록해야함. 
+			//식단을 health_data 에 기록해야함.
+			
+			// ToCode: to enter the total calories intake in the health data
+    		//칼로리 기록  
 		}
 	}
     
-
-    // ToCode: to enter the total calories intake in the health data
-    //칼로리 기록 
-    	
+    printf("Exiting the diet selection.\n");	
 	}
 
 
