@@ -113,7 +113,7 @@ void inputDiet(HealthData* health_data) {
 			//식단을 health_data 에 기록해야함.
 			
 			// ToCode: to enter the total calories intake in the health data
-    		//칼로리 기록  
+
 		}
 	}
     

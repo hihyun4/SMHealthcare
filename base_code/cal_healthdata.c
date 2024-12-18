@@ -19,7 +19,7 @@
     input parameters : health_data - data object in which the selected exercise and diet is stored
     return value : No
     
-    operation : 1. save the chosen exercise and total calories burned 
+    operation : 1. save the chosen exercise and total calories burned
     			2. save the chosen diet and total calories intake 
     			3. save the total remaining calrories
 */
@@ -35,15 +35,35 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     // ToCode: to save the chosen exercise and total calories burned 
     fprintf(file, "[Exercises] \n");
     
+    //운동 기록 저장 
+    for(i=0; i<health_data->exercise_count; i++)
+    {
+    	fprintf(file, "%s - %d kcal\n", health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute);
+	}
+    
+    
     
     // ToCode: to save the chosen diet and total calories intake 
+    
     fprintf(file, "\n[Diets] \n");
+    
+    //식단 기록 저장 
+    for(i=0; i< health_data->diet_count; i++)
+    {
+    	fprintf(file, "%s - %d kcal\n", health_data->diet[i].food_name, health_data->diet[i].calories_intake); 
+	}
 
 
 
     // ToCode: to save the total remaining calrories
     fprintf(file, "\n[Total] \n");
     
+    //총 칼로리 정보 저장 
+    int total_cal_burned; //총 칼로리 정보 변수 
+    total_cal_burned = (health_data->total_calories_intake) - BASAL_METABOLIC_RATE - (health_data->total_calories_burned);
+    
+    fprintf(file, "Basal metabolic rate - %d kcal\n", BASAL_METABOLIC_RATE);
+    fprintf(file, "The remaining calories - %d kcal\n", total_cal_burned);
     
 }
 
