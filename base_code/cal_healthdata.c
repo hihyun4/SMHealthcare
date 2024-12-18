@@ -24,6 +24,9 @@
     			3. save the total remaining calrories
 */
 
+//전역 변수로 남은 칼로리 변수 선언. 
+int remaining_calories;
+
 void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 	int i;
     FILE* file = fopen(HEALTHFILEPATH, "w");
@@ -59,11 +62,11 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     fprintf(file, "\n[Total] \n");
     
     //총 칼로리 정보 저장 
-    int total_cal_burned; //총 칼로리 정보 변수 
-    total_cal_burned = (health_data->total_calories_intake) - BASAL_METABOLIC_RATE - (health_data->total_calories_burned);
+ 
+	remaining_calories = (health_data->total_calories_intake) - BASAL_METABOLIC_RATE - (health_data->total_calories_burned);
     
     fprintf(file, "Basal metabolic rate - %d kcal\n", BASAL_METABOLIC_RATE);
-    fprintf(file, "The remaining calories - %d kcal\n", total_cal_burned);
+    fprintf(file, "The remaining calories - %d kcal\n", remaining_calories);
     
     fclose(file);
 }
@@ -93,8 +96,8 @@ void printHealthData(const HealthData* health_data) {
     printf("============================= History of Diet =========================\n");
     for(i=0; i < health_data->diet_count; i++)
     	printf("Food: %s, Calories intake: %d kcal", health_data->diet[i].food_name, health_data->diet[i].calories_intake);
-
-
+    	
+    	
     printf("=======================================================================\n");
 
 
@@ -104,9 +107,9 @@ void printHealthData(const HealthData* health_data) {
 	printf("Basal Metabolic Rate: %d kcal\n", BASAL_METABOLIC_RATE);
 	printf("Total calories burned: %d kcal\n", health_data->total_calories_burned);
 	printf("Total calories intake: %d kcal\n", health_data->total_calories_intake);
-	printf("The remaining calories: %d kcal\n", );
- 
- 
+	
+	remaining_calories = (health_data->total_calories_intake) - BASAL_METABOLIC_RATE - (health_data->total_calories_burned);
+	printf("The remaining calories: %d kcal\n", remaining_calories);
  
     printf("=======================================================================\n \n");
     
