@@ -101,7 +101,7 @@ void inputDiet(HealthData* health_data) {
 	
 	
 		// ToCode: to enter the selected diet in the health data
-		//식단 기록, choice의 범위가 잘못됐으면 다시 시도. 
+		//식단 기록, choice의 범위가 잘못됐으면 다시 시도
 		if(choice> diet_list_size || choice < 0)
 		{
 			printf("Wrong choice. Try again.\n");

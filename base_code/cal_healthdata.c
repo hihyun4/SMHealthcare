@@ -11,8 +11,7 @@
 
 #include "cal_exercise.h"
 #include "cal_diets.h"
-#include "cal_healthdata.h"
-
+#include "cal_healthdata.h" 
 
 /*
     description : enter the exercise and diet history in "health_data.txt" 
@@ -24,8 +23,10 @@
     			3. save the total remaining calrories
 */
 
+
 //전역 변수로 남은 칼로리 변수 선언. 
 int remaining_calories;
+
 
 void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 	int i;
@@ -37,32 +38,23 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 
     // ToCode: to save the chosen exercise and total calories burned 
     fprintf(file, "[Exercises] \n");
-    
     //운동 기록 저장 
     for(i=0; i<health_data->exercise_count; i++)
-    {
     	fprintf(file, "%s - %d kcal\n", health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute);
-	}
-    
     
     
     // ToCode: to save the chosen diet and total calories intake 
     
     fprintf(file, "\n[Diets] \n");
-    
     //식단 기록 저장 
     for(i=0; i< health_data->diet_count; i++)
-    {
     	fprintf(file, "%s - %d kcal\n", health_data->diet[i].food_name, health_data->diet[i].calories_intake); 
-	}
-
-
-
+	
+	
     // ToCode: to save the total remaining calrories
     fprintf(file, "\n[Total] \n");
     
     //총 칼로리 정보 저장 
- 
 	remaining_calories = (health_data->total_calories_intake) - BASAL_METABOLIC_RATE - (health_data->total_calories_burned);
     
     fprintf(file, "Basal metabolic rate - %d kcal\n", BASAL_METABOLIC_RATE);
@@ -116,6 +108,30 @@ void printHealthData(const HealthData* health_data) {
 	
 	// ToCode: to print out the recommendtaion depending on the current total calories burned and intake    
     
+    if(remaining_calories = 0) //남은 칼로리가 0인 경우 
+    {
+     	printf("You have consumed all your calories for today!\n"); 
+     	//시스템 종료? 
+	}
+    else if(remaining_calories<0) //남은 칼로리가 <0인 경우 
+    {
+    	printf("[Warning] Too few calories!\n");
+    	
+		if (health_data->total_calories_intake >= DAILY_CALORIE_GOAL) //섭취 칼로리가 일일 권장 칼로리에 도달한 경우 
+			printf("Your total calorie intake for today has reached your goal!\n");
+		else if(health_data->total_calories_intake < DAILY_CALORIE_GOAL) //섭취 칼로리가 일일 권장 칼로리보다 적은 경우 
+			printf("Your total calorie intake for today has not reached your goal, remember to eat more!!\n");
+		else if(health_data->total_calories_intake > DAILY_CALORIE_GOAL)
+			printf("You have eaten more calories than planned today, but have exercised too much!");
+		
+	}
+	else if(remaining_calories>0) //남은 칼로리가 >0인 경우 
+		printf("Please exercise for your health!");
+		if(health_data->total_calories_intake >= DAILY_CALORIE_GOAL) //섭취 칼로리가 일일 권장 칼로리에 도달한 경우 
+			printf("Your total calorie intake for today has reached your goal!");
+		else //섭취 칼로리가 일일 권장 칼로리보다 적은 경우 (= 섭취 칼로리가 일일 권잘 칼로리에 도달하지 못했을 경우)
+			printf("Your total calorie intake for today has not reached your goal, remember to eat more!!");
+		
     
 	 printf("=======================================================================\n");
 }
