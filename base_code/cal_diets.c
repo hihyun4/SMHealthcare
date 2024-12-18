@@ -110,10 +110,22 @@ void inputDiet(HealthData* health_data) {
 
 		else if(choice>0) 
 		{
-			//식단을 health_data 에 기록해야함.
-			
 			// ToCode: to enter the total calories intake in the health data
-
+			//식단 이름 끝(null)에 도달할 때까지 식단 이름 복사 
+			int j; 
+			for(j=0; diet_list[choice-1].food_name[j] != '\0'; j++) 
+			{
+				//현재 복사할 위치에 있는 식단 이름을 복사하기. 
+				health_data->diet[health_data->diet_count].food_name[j] = diet_list[choice-1].food_name[j];
+			}
+			//복사한 문자열 끝에 null문자 붙여서 문자열의 끝 표시하기 
+			health_data->diet[health_data->diet_count].food_name[strlen(diet_list[choice-1].food_name)] = '\0';
+			//선택한 식단의 칼로리도  기록. 
+			health_data->diet[health_data->diet_count].calories_intake = diet_list[choice - 1].calories_intake;
+			//식단 개수 증가
+			health_data->diet_count++;
+			//총 칼로리 섭취량에도 추가하기. 
+			health_data->total_calories_intake += diet_list[choice - 1].calories_intake;
 		}
 	}
     

@@ -80,14 +80,14 @@ void printHealthData(const HealthData* health_data) {
 	printf("=========================== History of Exercise =======================\n");
 	//Exercise: 운동 이름, Calories burned : 칼로리 kcal 
 	for(i=0; i< health_data->exercise_count; i++)
-		printf("Exercise: %s, Calories burned : %d kcal", health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute );
+		printf("Exercise: %s, Calories burned : %d kcal\n", health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute );
   
     printf("=======================================================================\n");
 
     // ToCode: to print out the saved history of diets
     printf("============================= History of Diet =========================\n");
     for(i=0; i < health_data->diet_count; i++)
-    	printf("Food: %s, Calories intake: %d kcal", health_data->diet[i].food_name, health_data->diet[i].calories_intake);
+    	printf("Food: %s, Calories intake: %d kcal\n", health_data->diet[i].food_name, health_data->diet[i].calories_intake);
     	
     	
     printf("=======================================================================\n");
@@ -121,16 +121,17 @@ void printHealthData(const HealthData* health_data) {
 			printf("Your total calorie intake for today has reached your goal!\n");
 		else if(health_data->total_calories_intake < DAILY_CALORIE_GOAL) //섭취 칼로리가 일일 권장 칼로리보다 적은 경우 
 			printf("Your total calorie intake for today has not reached your goal, remember to eat more!!\n");
-		else if(health_data->total_calories_intake > DAILY_CALORIE_GOAL)
-			printf("You have eaten more calories than planned today, but have exercised too much!");
+			
+		if (health_data->total_calories_intake > DAILY_CALORIE_GOAL) //섭취 칼로리가 일일 권장 칼로리보다 많은 경우 //이게 안 됨 
+			printf("You have eaten more calories than planned today, but have exercised too much!\n");
 		
 	}
 	else if(remaining_calories>0) //남은 칼로리가 >0인 경우 
-		printf("Please exercise for your health!");
+		printf("Please exercise for your health!\n");
 		if(health_data->total_calories_intake >= DAILY_CALORIE_GOAL) //섭취 칼로리가 일일 권장 칼로리에 도달한 경우 
-			printf("Your total calorie intake for today has reached your goal!");
+			printf("Your total calorie intake for today has reached your goal!\n");
 		else //섭취 칼로리가 일일 권장 칼로리보다 적은 경우 (= 섭취 칼로리가 일일 권잘 칼로리에 도달하지 못했을 경우)
-			printf("Your total calorie intake for today has not reached your goal, remember to eat more!!");
+			printf("Your total calorie intake for today has not reached your goal, remember to eat more!!\n");
 		
     
 	 printf("=======================================================================\n");
