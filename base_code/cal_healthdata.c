@@ -65,6 +65,7 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     fprintf(file, "Basal metabolic rate - %d kcal\n", BASAL_METABOLIC_RATE);
     fprintf(file, "The remaining calories - %d kcal\n", total_cal_burned);
     
+    fclose(file);
 }
 
 /*
@@ -82,12 +83,16 @@ void printHealthData(const HealthData* health_data) {
 	
 	// ToCode: to print out the saved history of exercises
 	printf("=========================== History of Exercise =======================\n");
-  
+	//Exercise: 운동 이름, Calories burned : 칼로리 kcal 
+	for(i=0; i< health_data->exercise_count; i++)
+		printf("Exercise: %s, Calories burned : %d kcal", health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute );
   
     printf("=======================================================================\n");
 
     // ToCode: to print out the saved history of diets
     printf("============================= History of Diet =========================\n");
+    for(i=0; i < health_data->diet_count; i++)
+    	printf("Food: %s, Calories intake: %d kcal", health_data->diet[i].food_name, health_data->diet[i].calories_intake);
 
 
     printf("=======================================================================\n");
@@ -96,6 +101,11 @@ void printHealthData(const HealthData* health_data) {
 	// ToCode: to print out the saved history of calories including basal metabolic rate, 
 	// total calories burned, total calories intake, and the remaining calories
 	printf("============================== Total Calories =========================\n");
+	printf("Basal Metabolic Rate: %d kcal\n", BASAL_METABOLIC_RATE);
+	printf("Total calories burned: %d kcal\n", health_data->total_calories_burned);
+	printf("Total calories intake: %d kcal\n", health_data->total_calories_intake);
+	printf("The remaining calories: %d kcal\n", );
+ 
  
  
     printf("=======================================================================\n \n");
