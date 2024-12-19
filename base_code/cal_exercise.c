@@ -101,14 +101,14 @@ void inputExercise(HealthData* health_data) {
 				health_data->exercises[health_data->exercise_count].exercise_name[j] = exercise_list[choice-1].exercise_name[j];
 			}
 			//문자열 끝에 null문자 붙여주기 
-			health_data->exercises[health_data->exercise_count].exercise_name[strlen(exercise_list[choice -1].exercise_name)] = '\0'; 
+			health_data->exercises[health_data->exercise_count].exercise_name[strlen(exercise_list[choice-1].exercise_name)] = '\0'; 
 				
 			// 선택한 운동의 칼로리 소모량 기록 
-			health_data->exercises[health_data->exercise_count].calories_burned_per_minute = exercise_list[choice - 1].calories_burned_per_minute; 
+			health_data->exercises[health_data->exercise_count].calories_burned_per_minute = exercise_list[choice-1].calories_burned_per_minute; 
 			health_data->exercise_count++; //운동 개수 증가 
 			
 			//총 소모 칼로리 추가( 총 칼로리 소모량 = 분당 칼로리 소모량 X 운동 시간) 
-			health_data->total_calories_burned += exercise_list[choice - 1].calories_burned_per_minute*duration;
+			health_data->total_calories_burned += exercise_list[choice -1].calories_burned_per_minute*duration;
 		}
 	}
 
