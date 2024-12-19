@@ -22,6 +22,10 @@ static Exercise exercise_list[MAX_EXERCISES];
 int exercise_list_size = 0;
 
 
+//main.c에서 선언한 운동시간을 저장할 배열을 다른 파일에서도 접근 가능하게 선언
+extern int exercise_durations[MAX_EXERCISES]; 
+
+
 /*
     description : read the information in "excercises.txt"
 */
@@ -105,6 +109,10 @@ void inputExercise(HealthData* health_data) {
 				
 			// 선택한 운동의 칼로리 소모량 기록 
 			health_data->exercises[health_data->exercise_count].calories_burned_per_minute = exercise_list[choice-1].calories_burned_per_minute; 
+			
+			//exercise_durations 배열에 운동별 운동 시간 기록. 
+			exercise_durations[health_data->exercise_count] =duration;
+			
 			health_data->exercise_count++; //운동 개수 증가 
 			
 			//총 소모 칼로리 추가( 총 칼로리 소모량 = 분당 칼로리 소모량 X 운동 시간) 

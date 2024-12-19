@@ -27,6 +27,9 @@
 //전역 변수로 남은 칼로리 변수 선언. 
 int remaining_calories;
 
+//main.c에서 선언한 운동시간을 저장할 배열을 다른 파일에서도 접근 가능하게 선언
+extern int exercise_durations[MAX_EXERCISES]; 
+
 
 void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 	int i;
@@ -40,7 +43,11 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     fprintf(file, "[Exercises] \n");
     //운동 기록 저장 
     for(i=0; i<health_data->exercise_count; i++)
-    	fprintf(file, "%s - %d kcal\n", health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute);
+    {
+    	//운동 이름, 운동별 소비 칼로리는 분당 소비칼로리 X exercise_durations배열 안  운동 시간으로 출력. 
+    	fprintf(file, "%s - %d kcal\n", health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute*exercise_durations[i]);
+	}
+    	
     //총 운동 칼로리 소모량
 	fprintf(file, "Total calories burned: %d kcal\n", health_data->total_calories_burned); 
     

@@ -19,6 +19,11 @@
 
 static int choice;
 
+
+//각 운동 당 운동 시간을 저장할 배열을 전역변수로 선언 
+int exercise_durations[MAX_EXERCISES];
+
+
 int main() {
 	// To initialize the health data object
     HealthData health_data = {0};
