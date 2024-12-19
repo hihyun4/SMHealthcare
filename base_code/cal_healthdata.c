@@ -41,7 +41,8 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     //운동 기록 저장 
     for(i=0; i<health_data->exercise_count; i++)
     	fprintf(file, "%s - %d kcal\n", health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute);
-    
+    //총 운동 칼로리 소모량
+	fprintf(file, "Total calories burned: %d kcal\n", health_data->total_calories_burned); 
     
     // ToCode: to save the chosen diet and total calories intake 
     
@@ -50,6 +51,8 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     for(i=0; i< health_data->diet_count; i++)
     	fprintf(file, "%s - %d kcal\n", health_data->diet[i].food_name, health_data->diet[i].calories_intake); 
 	
+	//총 식단 칼로리 소비량 
+	fprintf(file, "Total calories intake: %d kcal\n", health_data->total_calories_intake);  
 	
     // ToCode: to save the total remaining calrories
     fprintf(file, "\n[Total] \n");

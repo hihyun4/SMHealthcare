@@ -1,13 +1,14 @@
 [Exercises] 
-walking - 4 kcal
-riding - 5 kcal
 running - 11 kcal
+Total calories burned: 55 kcal
 
 [Diets] 
 chicken - 925 kcal
 chicken - 925 kcal
+pizza - 900 kcal
 chicken - 925 kcal
+Total calories intake: 3675 kcal
 
 [Total] 
 Basal metabolic rate - 1300 kcal
-The remaining calories - 1467 kcal
+The remaining calories - 2320 kcal
