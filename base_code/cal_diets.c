@@ -50,15 +50,15 @@ void loadDiets(const char* DIETFILEPATH) {
 
      // ToCode: to read a list of the diets from the given file
      //파일에서 식단 정보 읽기
-	  
     while (1) 
-	{
-    	
-    	//다 읽었으면 루프 탈출. 
-    	//MAX_FOOD_NAME_LEN에 null문자 포함해서 49까지 읽을 수 있게 설정. 
+	{	//파일을 읽어와서 저장 
+		//앞쪽은 이름, null문자 포함해서 49까지 읽은 후 diet_list의 food_name속 저장
+		//뒤쪽은 칼로리, 숫자로 읽은 후 diet_list의 calories_intake 속 저장
+
     	if(fscanf(file, "%49s %d", diet_list[diet_list_size].food_name, &diet_list[diet_list_size].calories_intake) != 2)
-    		break;
+    		break; //파일 끝에 도달 or 오류 발생 시 루프 탈출
     	
+    	//최대 식단 개수에 도달하면 탈출
         if (diet_list_size >= MAX_DIETS)
 		{
         	break;
@@ -113,6 +113,7 @@ void inputDiet(HealthData* health_data) {
 			// ToCode: to enter the total calories intake in the health data
 			//식단 이름 끝(null)에 도달할 때까지 식단 이름 복사 
 			int j; 
+			////0부터 문자열의 현재 위치에 있는 문자가 끝에 있는 null문자가 아닐 동안 실행하여 한 문자씩 복사하기
 			for(j=0; diet_list[choice-1].food_name[j] != '\0'; j++) 
 			{
 				//현재 복사할 위치에 있는 식단 이름을 복사하기. 

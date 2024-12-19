@@ -40,10 +40,13 @@ void loadExercises(const char* EXERCISEFILEPATH) {
     // ToCode: to read a list of the exercises from the given file
     while (1 ) {
     	
-    	//loadDiets랑 동일 
+    	//파일을 읽어와서 저장 
+		//앞쪽은 이름, null문자 포함해서 49까지 읽은 후 exercise_list의 exercise_name 속 저장
+		//뒤쪽은 칼로리, 숫자로 읽은 후 exercise_list의 calories_burned_per_minute 속 저장
     	if (fscanf(file, "%49s %d", exercise_list[exercise_list_size].exercise_name, &exercise_list[exercise_list_size].calories_burned_per_minute) !=2 )
-    		break;
-    		
+    		break;//파일 끝에 도달 or 오류 발생 시 루프 탈출
+    	
+    	//최대 운동 개수에 도달하면 탈출.
         if (exercise_list_size >= MAX_EXERCISES){
         	break;
 		}
@@ -75,7 +78,7 @@ void inputExercise(HealthData* health_data) {
 	for(i=0; i<exercise_list_size; i++)
 		printf("%d: %s, %d kcal/min\n", i+1, exercise_list[i].exercise_name, exercise_list[i].calories_burned_per_minute);
 
-	choice = -1; //초기값 -1로 설정. 
+	choice = -1; //초기값 -1로 설정
 	while(choice != 0)
 	{
 		// ToCode: to enter the exercise to be chosen with exit option
@@ -99,7 +102,8 @@ void inputExercise(HealthData* health_data) {
 			// ToCode: to enter the selected exercise and total calcories burned in the health data
 			
 			int j;
-			for (j = 0 ; exercise_list[choice - 1].exercise_name[j] != '\0' ; j++) 
+			//0부터 문자열의 현재 위치에 있는 문자가 끝에 있는 null문자가 아닐 동안 실행하여 한 문자씩 복사하기 
+			for (j = 0 ; exercise_list[choice -1].exercise_name[j] != '\0' ; j++) 
 			{
 				//문자열 끝에 도달할 때까지 복사 
 				health_data->exercises[health_data->exercise_count].exercise_name[j] = exercise_list[choice-1].exercise_name[j];
