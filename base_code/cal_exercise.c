@@ -77,10 +77,10 @@ void inputExercise(HealthData* health_data) {
 		printf("%d: %s, %d kcal/min\n", i+1, exercise_list[i].exercise_name, exercise_list[i].calories_burned_per_minute);
 
 	choice = -1; //초기값 -1로 설정
-	while(choice != 0)
+	while(choice != 0) //0을 선택하지 않을 때까지 
 	{
 		// ToCode: to enter the exercise to be chosen with exit option
-		//사용자 운동 입력
+		//사용자 운동 입력 
 		printf("Select exercise (0 to exit): ");
 		scanf("%d", &choice);
 		

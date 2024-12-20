@@ -1,9 +1,12 @@
 [Exercises] 
-Total calories burned - 0 kcal
+running - 33 kcal
+Total calories burned - 33 kcal
 
 [Diets] 
-Total calories intake - 0 kcal
+bread - 680 kcal
+bread - 680 kcal
+Total calories intake - 1360 kcal
 
 [Total] 
 Basal metabolic rate - 1300 kcal
-The remaining calories - -1300 kcal
+The remaining calories - 27 kcal
